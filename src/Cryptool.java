@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Cryptool {
+	// hello
 
 	/*
 	 * How to use: java -jar cryptools.jar [FALG]
