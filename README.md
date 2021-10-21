@@ -7,6 +7,9 @@
 
 > This program provides various calculations used for crypto.
 
+# Usage
+    java -jar cryptools.jar [FLAG]
+
 <br />
 
 ## 1. Binary, Hexadecimal, String Converter
