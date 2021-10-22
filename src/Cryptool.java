@@ -25,6 +25,13 @@ public class Cryptool {
      *          -otp-d <encryption value> <key>: 암호화된 값을 복호화
      *          -otp-e-hex <string>: 문자열을 OTP로 암호화 (암호화된 값과 키를 제공)
      *          -otp-d-hex <encryption value> <key>: 암호화된 값을 복호화
+     * 
+     *          -md2 <message>: md2 해시 값
+     *          -md5 <message>: md5 해시 값
+     *          -sha1 <message>: sha1 해시 값
+     *          -sha256 <message>: sha256 해시 값
+     *          -sha384 <message>: sha384 해시 값
+     *          -sha512 <message>: sha512 해시 값
      *
      *          -help: 사용법을 보여줌
      */
@@ -58,6 +65,13 @@ public class Cryptool {
         System.out.println("    -otp-d <encryption value> <key>     : decryption of <encryption value> using One Time Pad");
         System.out.println("    -otp-e-hex <string>                 : encryption of <string> using One Time Pad (return encryption value and key)");
         System.out.println("    -otp-d-hex <encryption value> <key> : decryption of <encryption value> using One Time Pad");
+        System.out.println();
+        System.out.println("    -md2 <message>    : hash to message using MD2");
+        System.out.println("    -md5 <message>    : hash to message using MD5");
+        System.out.println("    -sha1 <message>   : hash to message using SHA-1");
+        System.out.println("    -sha256 <message> : hash to message using SHA-256");
+        System.out.println("    -sha384 <message> : hash to message using SHA-384");
+        System.out.println("    -sha512 <message> : hash to message using SHA-512");
         System.out.println();
         System.out.println("    -help: show you how to use it");
         System.out.println();
@@ -172,12 +186,38 @@ public class Cryptool {
             System.out.println(otp.getDValue());
         }
 
-        else if(args[0].equals("-test")) {
-            Scanner sc = new Scanner(System.in);
-            System.out.print(">>> ");
-            System.out.println(sc.nextLine());
-            sc.close();
-        }
+        else if(args[0].equals("-md2")) {
+            if(args.length < 2) { help("[-md2]: Please enter the <message>"); return; }
+            
+            Hash hash = new Hash(remainArgs(args, 1));
+            System.out.println(hash.getMD2());
+        } else if(args[0].equals("-md5")) {
+            if(args.length < 2) { help("[-md5]: Please enter the <message>"); return; }
+            
+            Hash hash = new Hash(remainArgs(args, 1));
+            System.out.println(hash.getMD5());
+        } else if(args[0].equals("-sha1")) {
+            if(args.length < 2) { help("[-sha1]: Please enter the <message>"); return; }
+            
+            Hash hash = new Hash(remainArgs(args, 1));
+            System.out.println(hash.getSHA1());
+        } else if(args[0].equals("-sha256")) {
+            if(args.length < 2) { help("[-sha256]: Please enter the <message>"); return; }
+            
+            Hash hash = new Hash(remainArgs(args, 1));
+            System.out.println(hash.getSHA256());
+        } else if(args[0].equals("-sha384")) {
+            if(args.length < 2) { help("[-sha384]: Please enter the <message>"); return; }
+            
+            Hash hash = new Hash(remainArgs(args, 1));
+            System.out.println(hash.getSHA384());
+        } else if(args[0].equals("-sha512")) {
+            if(args.length < 2) { help("[-sha512]: Please enter the <message>"); return; }
+            
+            Hash hash = new Hash(remainArgs(args, 1));
+            System.out.println(hash.getSHA512());
+        } 
+        
         else if(args[0].equals("-help")) { help("java -jar cryptools.jar [FALG]"); }
         else { help("This [FLAG] does not exist"); }
     }

@@ -5,7 +5,7 @@ import java.math.*;
 public class Util {
     public static boolean checkBinary(String binary) { return Pattern.matches("^[0-1]*$", binary); }
     public static boolean checkHex(String hex) { return Pattern.matches("^[0-9a-fA-F]*$", hex); }
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static String stringToBinary(String msg, String encode) throws UnsupportedEncodingException {
@@ -67,6 +67,15 @@ public class Util {
         int count = (int) Math.ceil((binary.length() - (sb.toString().length() * 4)) / 4.0);
         for(int i=0; i<count; i++) sb.insert(0, "0");
 
+        return sb.toString();
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // It is used in Hash.java
+    public static String bytesToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for(byte b: bytes) sb.append(String.format("%02x", b));
         return sb.toString();
     }
     
