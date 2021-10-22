@@ -11,6 +11,7 @@
 # Usage
 
 ```Bash
+# java version: openjdk 11.0.11
 java -jar cryptools.jar [FLAG]
 ```
 
