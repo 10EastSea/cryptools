@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Cryptool {
 
     /*
@@ -26,12 +24,15 @@ public class Cryptool {
      *          -otp-e-hex <string>: 문자열을 OTP로 암호화 (암호화된 값과 키를 제공)
      *          -otp-d-hex <encryption value> <key>: 암호화된 값을 복호화
      * 
-     *          -md2 <message>: md2 해시 값
-     *          -md5 <message>: md5 해시 값
-     *          -sha1 <message>: sha1 해시 값
-     *          -sha256 <message>: sha256 해시 값
-     *          -sha384 <message>: sha384 해시 값
-     *          -sha512 <message>: sha512 해시 값
+     *          -md2 <message>: MD2 해시 값
+     *          -md5 <message>: MD5 해시 값
+     *          -sha1 <message>: SHA-1 해시 값
+     *          -sha256 <message>: SHA-256 해시 값
+     *          -sha384 <message>: SHA-384 해시 값
+     *          -sha512 <message>: SHA-512 해시 값
+     * 
+     *          -b64-e <message>: Base64 인코딩
+     *          -b64-d <encoded message>: Base64 디코딩 
      *
      *          -help: 사용법을 보여줌
      */
@@ -72,6 +73,9 @@ public class Cryptool {
         System.out.println("    -sha256 <message> : hash to message using SHA-256");
         System.out.println("    -sha384 <message> : hash to message using SHA-384");
         System.out.println("    -sha512 <message> : hash to message using SHA-512");
+        System.out.println();
+        System.out.println("    -b64-e <message>         : encode the message using Base64 Encode");
+        System.out.println("    -b64-d <encoded message> : decode the encoded message using Base64 Decode");
         System.out.println();
         System.out.println("    -help: show you how to use it");
         System.out.println();
@@ -216,7 +220,19 @@ public class Cryptool {
             
             Hash hash = new Hash(remainArgs(args, 1));
             System.out.println(hash.getSHA512());
-        } 
+        }
+
+        else if(args[0].equals("-b64-e")) {
+            if(args.length < 2) { help("[-b64-e]: Please enter the <message>"); return; }
+
+            Base base = new Base(remainArgs(args, 1));
+            System.out.println(base.getEncodedMsg());
+        } else if(args[0].equals("-b64-d")) {
+            if(args.length < 2) { help("[-b64-d]: Please enter the <encoded message>"); return; }
+
+            Base base = new Base(remainArgs(args, 1));
+            System.out.println(base.getDecodedMsg());
+        }
         
         else if(args[0].equals("-help")) { help("java -jar cryptools.jar [FALG]"); }
         else { help("This [FLAG] does not exist"); }

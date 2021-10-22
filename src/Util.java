@@ -21,7 +21,7 @@ public class Util {
         StringBuilder sb = new StringBuilder("00000000");
 
         for(int i=0; i<8; i++) {
-            if(((b >> i) & 1) > 0)  sb.setCharAt(7 - i, '1');
+            if(((b >> i) & 1) > 0) sb.setCharAt(7 - i, '1');
         }
 
         return sb.toString();
