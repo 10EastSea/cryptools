@@ -3,12 +3,15 @@
 1. Binary, Hexadecimal, String Converter
 2. XOR Calculator
 3. One-Time Pad
-4. Hash (Preparing ..)
+4. Hash Function
 
 > This program provides various calculations used for crypto.
 
 # Usage
-    java -jar cryptools.jar [FLAG]
+
+```Bash
+java -jar cryptools.jar [FLAG]
+```
 
 <br />
 
@@ -102,3 +105,43 @@ secret
 ```
 
 Reference: [One-time pad in Wikipedia](https://en.wikipedia.org/wiki/One-time_pad)
+
+<br />
+
+## 4. Hash Function
+
+- `-md2 <message>` :  hash to message using MD2
+```Bash
+>> java -jar cryptools.jar -md2 "Message Digest"
+ed59e3b00ef50f82cc80fe4023bbf98f
+```
+
+- `-md5 <message>` :  hash to message using MD5
+```Bash
+>> java -jar cryptools.jar -md5 "Message Digest"
+bbd9d8cc4ad8ad2599dbf623e7e5282e
+```
+
+- `-sha1 <message>` :  hash to message using SHA-1
+```Bash
+>> java -jar cryptools.jar -sha1 "Secure Hash Algorithm"
+d3517cbe39e304a3988dc773fa6f1e71f6ff965e
+```
+
+- `-sha256 <message>` :  hash to message using SHA-256
+```Bash
+>> java -jar cryptools.jar -sha256 "Secure Hash Algorithm"
+42cf1ce9880d7f211c3d30d3bd376d20b26aaf6a929471108025c8e99b751c89
+```
+
+- `-sha384 <message>` :  hash to message using SHA-384
+```Bash
+>> java -jar cryptools.jar -sha384 "Secure Hash Algorithm"
+33cbb9d78800bc3e6ee3fcb19103946c2fe12027c53cdeae4b1f8e7c1b0cdddf60acc323a3dd17d44eea1bf6bd14fff9
+```
+
+- `-sha512 <message>` :  hash to message using SHA-512
+```Bash
+>> java -jar cryptools.jar -sha512 "Secure Hash Algorithm"
+f1ddc74427b792477be3939e2f3c1102edb297ba817b1427b86a68f459926488a7d51df4db609dcfd801671fc25230e9889cf0ba6ea00c88d8b184001589188c
+```
