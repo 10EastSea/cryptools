@@ -4,6 +4,7 @@
 2. XOR Calculator
 3. One-Time Pad
 4. Hash Function
+5. Base64 Encode & Decode
 
 > This program provides various calculations used for crypto.
 
@@ -144,4 +145,20 @@ d3517cbe39e304a3988dc773fa6f1e71f6ff965e
 ```Bash
 >> java -jar cryptools.jar -sha512 "Secure Hash Algorithm"
 f1ddc74427b792477be3939e2f3c1102edb297ba817b1427b86a68f459926488a7d51df4db609dcfd801671fc25230e9889cf0ba6ea00c88d8b184001589188c
+```
+
+<br />
+
+## 5. Base64 Encode & Decode
+
+- `-b64-e <message>` :  encode the message using Base64 Encode
+```Bash
+>> java -jar cryptools.jar -b64-e "Base64 Encode"
+QmFzZTY0IEVuY29kZQ==
+```
+
+- `-b64-d <encoded message>` :  decode the encoded message using Base64 Decode
+```Bash
+>> java -jar cryptools.jar -b64-d "QmFzZTY0IERlY29kZQ=="
+Base64 Decode
 ```
