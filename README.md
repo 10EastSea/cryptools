@@ -5,6 +5,7 @@
 3. One-Time Pad
 4. Hash Function
 5. Base64 Encode & Decode
+6. File IO
 
 > This program provides various calculations used for crypto.
 
@@ -162,4 +163,35 @@ QmFzZTY0IEVuY29kZQ==
 ```Bash
 >> java -jar cryptools.jar -b64-d "QmFzZTY0IERlY29kZQ=="
 Base64 Decode
+```
+
+<br />
+
+## 6. File IO
+
+It can be used with `-f` attached to all `[FLAG]` except for the `-ascii` command
+
+- `-s2h-f <file path>` :  string to hex (create output.txt)
+```Bash
+>> java -jar crtptools.jar -s2h-f "./src/Base.java"
+>> cat output.txt
+696d706f7274206a6176612e7574696c2e4261736536343b...
+```
+
+- `-h2s-f <file path>` :  hex to string (create output.txt)
+```Bash
+>> java -jar crtptools.jar -h2s-f "./output.txt"
+>> cat output.txt 
+import java.util.Base64;
+
+public class Base {
+    private String encodedMsg = "", decodedMsg = "";
+...
+```
+
+- `-sha256-f <file path>` :  hash to message using SHA-256 (create output.txt)
+```Bash
+>> java -jar crtptools.jar -s2h-f "./src/Base.java"
+>> cat output.txt
+633ab5a1562009f077601ea39c1159f94a52044da00e1a50bad93591700c4f6c
 ```
