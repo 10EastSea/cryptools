@@ -33,6 +33,8 @@ public class Cryptool {
      * 
      *          -b64-e <message>: Base64 인코딩
      *          -b64-d <encoded message>: Base64 디코딩 
+     * 
+     *          [FLAG]-f <file path> (<file path2>): 파일 입출력으로 위 과정 수행
      *
      *          -help: 사용법을 보여줌
      */
@@ -76,6 +78,8 @@ public class Cryptool {
         System.out.println();
         System.out.println("    -b64-e <message>         : encode the message using Base64 Encode");
         System.out.println("    -b64-d <encoded message> : decode the encoded message using Base64 Decode");
+        System.out.println();
+        System.out.println("    [FLAG]-f <file path> (<file path2>) : perform the above process by FileIO");
         System.out.println();
         System.out.println("    -help: show you how to use it");
         System.out.println();
@@ -167,7 +171,7 @@ public class Cryptool {
             System.out.println(otp.getEValue());
             System.out.println("(Key: " + otp.getKey() + ")");
         } else if(args[0].equals("-otp-d")) {
-            if(args.length != 3) { help("[-otp-d]: Please enter the <key> and <encryption value>"); return; }
+            if(args.length != 3) { help("[-otp-d]: Please enter the <encryption value> and <key>"); return; }
 
             String binary1 = args[1], binary2 = args[2];
             if(!Util.checkBinary(binary1) || !Util.checkBinary(binary2)) { help("[-otp-d]: <encryption value> and <key> are not binary (Enter only 0 and 1)"); return; }
@@ -181,7 +185,7 @@ public class Cryptool {
             System.out.println(Util.binaryToHex(otp.getEValue()));
             System.out.println("(Key: " + Util.binaryToHex(otp.getKey()) + ")");
         } else if(args[0].equals("-otp-d-hex")) {
-            if(args.length != 3) { help("[-otp-d-hex]: Please enter the <key> and <encryption value>"); return; }
+            if(args.length != 3) { help("[-otp-d-hex]: Please enter the <encryption value> and <key>"); return; }
 
             String hex1 = args[1], hex2 = args[2];
             if(!Util.checkHex(hex1) || !Util.checkHex(hex2)) { help("[-otp-d-hex]: <encryption value> and <key> are not hex (Enter only numbers and A to F(a ~ f))"); return; }
@@ -235,6 +239,6 @@ public class Cryptool {
         }
         
         else if(args[0].equals("-help")) { help("java -jar cryptools.jar [FALG]"); }
-        else { help("This [FLAG] does not exist"); }
+        else { if(!FileManager.checkAndDoFileFlag(args)) help("This [FLAG] does not exist"); }
     }
 }
